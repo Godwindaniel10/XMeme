@@ -66,10 +66,34 @@ function listAll(){
        const name_content = document.createElement('h2');
        const img_url = memes_data[i].url;
        const img = document.createElement('img');
+
+       // like button
+       const likeBtn = document.querySelector(".like__btn");
+       let likeIcon = document.querySelector("#icon");
+       // let count = document.querySelector("#count");
+
+       likeBtn.style.visibility = "visible";  //make like button visible 
+
+      //button clicked
+      let clicked = false;
+
+      likeBtn.addEventListener("click", () => {
+        if(!clicked) {
+           clicked = true;
+           likeIcon.innerHTML = `<i class="fas fa-thumbs-up"></i>`;
+           // count.textContent++ ;
+      }
+        else {
+           clicked = false;
+           likeIcon.innerHTML = `<i class="far fa-thumbs-up"></i>`;
+          // count.textContent-- ;
+      }
+    })
+
        
-       const like = document.createElement('button');
+       /*const like = document.createElement('button');
        like.innerHTML = "😂";
-       like.className="like";
+       like.className="like";*/
 
        //const edit = document.createElement('button');
        //edit.innerHTML = "EDIT";
@@ -82,7 +106,7 @@ function listAll(){
        div.appendChild(name_content);
        div.appendChild(caption);
        div.appendChild(img);
-       div.appendChild(like);
+       div.appendChild(likeBtn);  // append like button
        //div.append(edit);
        memes_element.appendChild(div);
 
@@ -92,3 +116,5 @@ function listAll(){
     }
   });
 }
+
+
